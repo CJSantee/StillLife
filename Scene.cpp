@@ -39,8 +39,7 @@ GLuint bookList;
 GLuint cupList;
 GLuint teapotList;
 
-GLfloat light_position[] = {1.5, 1.5, 1.5, 0.0};
-
+// Default color values
 float black[] = {0.0f, 0.0f, 0.0f, 1.0f};
 float specular_color[] = {0.5f, 0.5f, 0.5f, 1.0f};
 float white[] = {1.0f, 1.0f, 1.0f, 1.0f};
@@ -59,22 +58,6 @@ void init(){
     glutMouseFunc(trackballMouseFunction);
     glutMotionFunc(trackballMotionFunction);
     return;
-}
-
-// Create the display list for the floor object using Triangle Fan
-void generateFloor(){
-
-    floorList = glGenLists(1);
-    glNewList(floorList, GL_COMPILE);
-        glBegin(GL_TRIANGLE_FAN);
-            glNormal3f(0.0f, 1.0f, 0.0f);
-            glVertex3f(-1.0f, -1.0f, -1.0f);
-            glVertex3f(-1.0f, -1.0f,  1.0f);
-            glVertex3f( 1.0f, -1.0f,  1.0f);
-            glVertex3f( 1.0f, -1.0f, -1.0f);
-        glEnd();
-    glEndList();
-
 }
 
 // Draw Quad using Triangle Fans given 8 Vertices
@@ -131,6 +114,23 @@ void triangleQuad(float* blt, float* brt, float* frt, float* flt, float* blb, fl
     glEnd();
 }
 
+// Create the display lists for each object
+
+void generateFloor(){
+
+    floorList = glGenLists(1);
+    glNewList(floorList, GL_COMPILE);
+        glBegin(GL_TRIANGLE_FAN);
+            glNormal3f(0.0f, 1.0f, 0.0f);
+            glVertex3f(-1.0f, -1.0f, -1.0f);
+            glVertex3f(-1.0f, -1.0f,  1.0f);
+            glVertex3f( 1.0f, -1.0f,  1.0f);
+            glVertex3f( 1.0f, -1.0f, -1.0f);
+        glEnd();
+    glEndList();
+
+}
+
 void generateTable(){
 
     float tableHeight  = 0.0;
@@ -150,6 +150,7 @@ void generateTable(){
         float frontLeftBottom[3]    = {0.0-(tableSize/2), tableHeight-tableDepth, 0.0+(tableSize/2)};
         float frontRightTop[3]      = {0.0+(tableSize/2), tableHeight, 0.0+(tableSize/2)};
         float frontRightBottom[3]   = {0.0+(tableSize/2), tableHeight-tableDepth, 0.0+(tableSize/2)};
+        
         // Generate Table Top Shape with Triangles
         triangleQuad(backLeftTop, backRightTop, frontRightTop, frontLeftTop, backLeftBottom, backRightBottom, frontRightBottom, frontLeftBottom);
         
@@ -270,12 +271,6 @@ void generateLaptop(){
             glVertex3fv(screenBackLeftBottom);
         glEnd();
 
-        // IDEAS FOR IMPROVEMENT:
-        // ROTATE SCREEN?
-        // ADD BLACK SCREEN + MOUSEPAD
-
-        // float x2 = (cos(degree)*x1) - (sin(degree)*y1);
-        // float y2 = (sin(degree)*x1) + (cos(degree)*y1);
     glEndList();
 }
 
@@ -331,10 +326,6 @@ void generateMonitor(){
         glPopMatrix();
     glEndList();
 
-    // Improvements:
-    // Light from monitor
-    // Extend monitor from stand
-    
 }
 
 void generateBook(){
@@ -426,10 +417,6 @@ void generateBook(){
             glVertex3fv(coverBackLeftTop);
         glEnd();
     glEndList();
-
-    // Improvements:
-    // Round binding
-    // Textbook cover texture
     
 }
 
@@ -514,9 +501,6 @@ void generateCup(){
 
     glEndList();
 
-    // Improvements:
-    // Make more custom for application, reduce need for rotation
-    // Add cup handle
 }
 
 void generateTeapot(){
@@ -529,12 +513,6 @@ void generateTeapot(){
         glPopMatrix();
     glEndList();
 }
-
-// Additional Ideas:
-// Computer Mouse
-// Lamp
-// iPhone
-// Pen/Pencil
 
 void display() {
     glClearColor(0.286f, 0.509f, 0.58f, 1.0f);
@@ -583,9 +561,7 @@ void display() {
     glMaterialf(GL_FRONT, GL_SHININESS, 50);
     glCallList(bookList);
 
-    // Use this material for all the vertices of the cylinder. I'm
-    // experimenting here. We may not use all these colors.
-    float gold[] = { 1.0f, 0.7f, 0.5f, 1.0f };
+    float gold[] = { 1.0f, 0.7f, 0.5f, 1.0f }; // Color of the cup & teapot : Bronze-ish
     float black[] = { 0.0f, 0.0f, 0.0f, 1.0f };
     float white[] = { 1.0f, 1.0f, 1.0f, 1.0f };
     glMaterialfv(GL_FRONT, GL_DIFFUSE, gold);

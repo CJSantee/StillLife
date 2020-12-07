@@ -1,101 +1,63 @@
 # Homework #5: A scene of your own
 
-### Details
+## Details
 
-  CS3233-01 Homework #5
-  Still Life Scene - My Desk 
-  Colin Santee
-  Due: December 7th, 2020
-  Details: Program draws a lighted 3-dimensional scene of my general desk setup. 
-  Objects include: a table, laptop, monitor, textbook, coffee cup, and the Utah Teapod!
-  Runs with: `g++ Scene.cpp camera.cpp -framework GLUT -framework OpenGL -Wno-deprecated`
+### Assignment
+CS3233-01 Homework #5
   
- ### MultiMC
-
-  Add a new minecraft instance and press "Install Fabric" in the instance options.
-
-
-  Then download the lastest [release](https://github.com/KaptainWutax/SeedCracker/releases) of SeedCracker and put the `.jar` file    in your mods directory, either `%appdata%/.minecraft/mods/` folder for the vanilla launcher or your own MultiMC instance folder.
-
-## Usage
-
-  Run minecraft with the mod installed and run around in the world. Once the mod has collected enough data, it will start the cracking process automatically and output the seed in chat. For the process to start, the amount of data that needs to be collected varies depending on the type of feature. `/seed data bits` can be used to see how much progress has been done. 
+Still Life Scene - My Desk 
   
-  ### Supported Structures
-    - Ocean Monument
-    - End City
-    - Buried Treasure
-    - Desert Pyramid
-    - Jungle Temple
-    - Swamp Hut
-    - Shipwreck
+[Colin Santee](https://github.com/CJSantee)
   
-  ### Supported Decorators
-    - Dungeon
-    - End Gateway
-    - Desert Well
-    - Emerald Ore
+Due: December 7th, 2020
 
-## Commands
-
-  The command prefix for this mod is /seed.
+### Description
+Program draws a lighted 3-dimensional scene of my general desk setup. 
+Objects include: a table, laptop, monitor, textbook, coffee cup, and the Utah Teapod!
   
-  ### Render Command  
-  -`/seed render outlines <ON/OFF/XRAY>`
-    
-  This command only affects the renderer feedback. The default value is 'XRAY' and highlights data through blocks. You can set    the render mod to 'ON' for more standard rendering. 
+### Build
+Compile with: `g++ Scene.cpp camera.cpp -framework GLUT -framework OpenGL -Wno-deprecated`
   
-  ### Finder Command
-  -`/seed finder type <FEATURE_TYPE> (ON/OFF)`
+Run with: `./a.out`
   
-  -`/seed finder category (BIOMES/ORES/OTHERS/STRUCTURES) (ON/OFF)`
-  
-  This command is used to disable finders in case you are aware the data is wrong. For example, a map generated in 1.14 has different decorators and would require you to disable them while going through those chunks.
+## Objects
 
-  ### Data Command
-  - `/seed data clear`
-  
-  Clears all the collected data without requiring a relog. This is useful for multi-world servers.
-  
-  - `/seed data bits`
-  
-  Display how many bits of information have been collected. Even though this is an approximate, it serves as a good basis to guess when the brute-forcing should start.
-  
-  ### Cracker Command
-  - `/seed cracker <ON/OFF>`
- 
-  Enables or disables the mod completely. Unlike the other commands, this one is persistent across reloads.
-  
-## Video Tutorial
+### Table
+The table, like all other objects in the scene, was designed with variability in mind, the `generateTable()` function can be updated to change the table height, width, depth of the table top, and width of the legs.
+### Laptop
+The laptop in the scene is modeled after a MacBook Pro with a 16:9 aspect-ratio screen. 
+### Monitor 
+The secondary monitor in the scene is designed using several cubic shapes, drawn using the custom method, `triangleQuad()` which utalizes `GL_TRIANGLE_FAN` to create a quad.
+### Textbook
+The textbook, designed with the standard American A1 paper aspect ratio in mind, is drawn with a cover, binding, and a variable number of pages (by default, 5).
+### Cup / Mug
+The cup in the scene is designed as an open-ended cylinder with an entirely hollow half-cylinder for the handle. 
 
-https://youtu.be/1ChmLi9og8Q
+## A suprise!
+Inlcuded in my Design is the Glut implementation of the Utah Teapot, positioned behind my laptop, ready to refill the mug. 
 
-## Upcoming Features
+### Utah Teapod 
+The Utah teapot, or the Newell teapot, is a 3D test model that has become a standard reference object and an in-joke within the computer graphics community. It is a mathematical model of an ordinary, Melitta-brand teapot that appears solid, cylindrical, and partially convex. Using a teapot model is considered the 3D equivalent of a "Hello, World!" program, a way to create an easy 3D scene with a somewhat complex model acting as the basic geometry for a scene with a light setup. Some programming libraries, such as the OpenGL Utility Toolkit, even have functions dedicated to drawing teapots.
 
-A list of features I have on my mind... they won't necessarily be implemented in this order if at all.
+The teapot model was created in 1975 by early computer graphics researcher Martin Newell, a member of the pioneering graphics program at the University of Utah. It was one of the first to be modeled (using bézier curves) rather than precisely measured. -[Wikipedia](https://en.wikipedia.org/wiki/Utah_teapot)
 
-    - SHA2 brute-forcing, auxiliary to biomes search. /implemented
-    - Dungeon floor cracker, fast lattice reversal. /implemented
-    - Stronghold portal room cracker. (alternative to dungeon floor?)
-    - Faster brute-forcing by reorganizing located features list. /implemented
-    - End and nether biome finders. (nether would mostly be in preparation for 1.16) /implemented
-
-## Setting up the Workspace
-
--Clone the repository.
-
--Run `gradlew genSources <idea|eclipse>`.
-
-## Building the Mod
-
--Update the version in `build.gradle` and `fabric.mod.json`.
-
--Run `gradlew build`.
- 
-## Contributors
-
-[KaptainWutax](https://github.com/KaptainWutax) - Author
-
-[neil](https://www.youtube.com/watch?v=aUuPSZVPH8E) - Video Tutorial
-
-[Nekzuris](https://github.com/Nekzuris) - README
+## Improvements
+While I'm proud of the scene I created, there are several improvements I would have implemented, given more time. 
+### Laptop
+- Rotate the screen along the axis of the hinge.
+- Add a different-colored screen, emitting it's own light
+- Added a rectangular mouse pad
+### Monitor
+- Add a different-colored screen, emitting it's own light
+- Position the screen further extended from the stand with an additional mount
+### Textbook
+- Round the binding
+- Add a texture map to place an image on the cover
+### Cup
+- Increase the width of the sides of the cup
+### Other Objects
+Other objects I would like to include in the scene:
+- Computer Mouse
+- Lamp
+- iPhone
+- Pen / Pencil
