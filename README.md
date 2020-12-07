@@ -39,7 +39,9 @@ Inlcuded in my Design is the Glut implementation of the Utah Teapot, positioned 
 ### Utah Teapod 
 The Utah teapot, or the Newell teapot, is a 3D test model that has become a standard reference object and an in-joke within the computer graphics community. It is a mathematical model of an ordinary, Melitta-brand teapot that appears solid, cylindrical, and partially convex. Using a teapot model is considered the 3D equivalent of a "Hello, World!" program, a way to create an easy 3D scene with a somewhat complex model acting as the basic geometry for a scene with a light setup. Some programming libraries, such as the OpenGL Utility Toolkit, even have functions dedicated to drawing teapots.
 
-The teapot model was created in 1975 by early computer graphics researcher Martin Newell, a member of the pioneering graphics program at the University of Utah. It was one of the first to be modeled (using bézier curves) rather than precisely measured. -[Wikipedia](https://en.wikipedia.org/wiki/Utah_teapot)
+The teapot model was created in 1975 by early computer graphics researcher Martin Newell, a member of the pioneering graphics program at the University of Utah. It was one of the first to be modeled (using bézier curves) rather than precisely measured. 
+
+-[Wikipedia](https://en.wikipedia.org/wiki/Utah_teapot)
 
 ## Improvements
 While I'm proud of the scene I created, there are several improvements I would have implemented, given more time. 
